@@ -1,13 +1,38 @@
 # HITO 2 - Node.js - Express - API
+# Hito-2-Backend_Node_y_Express
 
 Proyecto educativo básico "Creación de un servidor" con node y express
 
-Inicializar el proyecto:
-
 ESTA ES LA CONTINUACIÓN DEL REPOSITORIO: https://github.com/DiegoGonzalezBaeza/Hito-1-
 
+# Sistema de Gestión de Base de Datos
 
+- **PostgresSql**: Es un sistema de gestión de bases de datos relacional (RDBMS) de código abierto, robusto y ampliamente utilizado.
 
+Características clave:
+Relacional y Orientado a Objetos: Soporta relaciones tradicionales y también características avanzadas como herencia y tipos de datos personalizados.
+Consultas Avanzadas: Compatible con SQL estándar y extensiones propias.
+Escalabilidad: Ideal para proyectos pequeños y grandes; puede manejar grandes volúmenes de datos.
+
+- **Docker**: Es una plataforma que permite crear, desplegar y ejecutar aplicaciones dentro de contenedores.
+¿Qué son los contenedores?
+Son entornos ligeros y portátiles que incluyen todo lo necesario para que una aplicación funcione (código, dependencias, librerías, etc.). Son como "máquinas virtuales" pero mucho más eficientes.
+
+Ventajas principales:
+Portabilidad: Los contenedores se ejecutan de la misma manera en cualquier entorno, ya sea tu computadora, un servidor, o la nube.
+Aislamiento: Cada contenedor es independiente, evitando conflictos entre aplicaciones.
+Eficiencia: Consume menos recursos que las máquinas virtuales tradicionales.
+Escalabilidad: Facilita la gestión de aplicaciones distribuidas.
+
+# 1.- Instalar node postgres:
+
+Permite conectar el proyecto con la base de datos
+
+```bash
+npm install pg
+```
+
+# 2.- Extensión PostgreSQL
 
 
 
@@ -168,6 +193,4 @@ Operaciones GET:
 
 POST: http://localhost:3000/api/v1/auth/login
 
-      http://localhost:3000/api/v1/auth/register# Hito-1-
-# Hito---2
-# Hito-2-Backend_Node_y_Express
+      http://localhost:3000/api/v1/auth/register# 
