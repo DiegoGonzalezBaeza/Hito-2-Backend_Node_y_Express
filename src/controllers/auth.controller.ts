@@ -1,9 +1,10 @@
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 import { userService } from "../services/user.service";
 import { authService } from "../services/auth.service";
+import { HttpError } from "../utils/httpError.util";
 
 
-const login = async(req: Request, res: Response) => {
+const login = async(req: Request, res: Response, next: NextFunction) => {
     try{
         const {email, password} = req.body;
 
@@ -11,23 +12,17 @@ const login = async(req: Request, res: Response) => {
 
         res.json({ token });
     } catch (error) {
-        console.log(error);
-        if (error instanceof Error) {
-        res.status(500).json({error: error.message});
-        } else res.status(500).json({error: "Error del servidor"});;
+        next(error);
     }
 };
 
-const register = async(req: Request, res: Response) => {
+const register = async(req: Request, res: Response, next: NextFunction) => {
     try{
         const {email, password} = req.body;
-        const newUser = await userService.createUserWithEmailAndPassword(email, password);
-        res.json({ newUser });
+        const token = await authService.registerUserWithEmailAndPassword(email, password);
+        res.status(201).json({ token });
     } catch (error) {
-        console.log(error);
-        if (error instanceof Error) {
-        res.status(500).json({error: error.message});
-        } else res.status(500).json({error: "Error del servidor"});;
+       next(error);
     }
 };
 

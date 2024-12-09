@@ -1,0 +1,7 @@
+2024-12-09T02:51:18.221Z [ERROR]: /api/v1/auth/login POST User not found
+2024-12-09T02:51:30.646Z [ERROR]: /api/v1/auth/login POST Password incorrect 
+2024-12-09T05:14:31.347Z [ERROR]: /api/v1/movies/create POST column "releaseyear" of relation "movies" does not exist
+2024-12-09T05:16:27.436Z [ERROR]: /api/v1/movies/create POST column "releaseyear" of relation "movies" does not exist
+2024-12-09T05:18:43.246Z [ERROR]: /api/v1/movies/create POST column "releaseyear" of relation "movies" does not exist
+2024-12-09T05:20:42.386Z [INFO]: /api/v1/movies/create POST
+2024-12-09T05:20:42.532Z [ERROR]: /api/v1/movies/create POST column "releaseyear" of relation "movies" does not exist

@@ -1,29 +1,44 @@
-import {Request, Response, NextFunction} from "express";
-import  jwt  from "jsonwebtoken";
+import { NextFunction, Request, Response } from "express";
+import jwt from "jsonwebtoken";
+import { verifyAccessToken } from "../utils/auth.util";
 
+// Quiero extender o modificar el comportamiento de un módulo ya existente.
+declare module "express-serve-static-core" {
+  interface Request {
+    uid?: string,
+    email?: string;
+  }
+}
 
-export const verifyToken = async(req: Request, res: Response, next: NextFunction) => {
-    // console.log("Alerta, pasó por aquí")
-    
-    // -se usa next() si queremos que tal usuario pueda seguir
-    // next();
-
-    // -O se usar error para evitar que siga:
-    // res.status(401).json({ error: "no autorizado"});
-
-    const authHeader = req.headers.authorization; // "Bearer token..."
-    if (!authHeader) {
-        res.status(401).json({ error: "No Bearer Header"});
-        return
+export const verifyToken = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  const authHeader = req.headers.authorization;
+  if (!authHeader) {
+    res.status(401).json({ error: "Bearer token not found" });
+    return;
+  }
+  const token = authHeader.split(" ")[1];
+  try {
+    const payload = verifyAccessToken(token);
+    req.email = payload.email;
+    req.uid = payload.uid;
+    next();
+  } catch (error) {
+    console.log(error);
+    if (error instanceof jwt.JsonWebTokenError) {
+      res.status(401).json({ error: "Token invalid signature" });
+      return;
     }
 
-    const token = authHeader.split(" ")[1]
-    try {
-        const payload =jwt.verify(token, "secret");
-        console.log(payload);
-        next();
-    } catch (error) {
-        console.log(error);
-        res.status(401).json({ error: "Token invalid"});
+    if (error instanceof jwt.TokenExpiredError) {
+      res.status(401).json({ error: "Token expired" });
+      return;
     }
+
+    res.status(500).json("Token Error");
+    return;
+  }
 };

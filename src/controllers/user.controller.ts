@@ -9,7 +9,7 @@ const getUsers = async(req: Request, res: Response) => {
         console.log(error);
         if (error instanceof Error) {
         res.status(500).json({error: error.message});
-        } else res.status(500).json({error: "Error del servidor"});;
+        } else res.status(500).json({error: "Error del servidor"});
     }
 };
 
@@ -26,7 +26,7 @@ const getUser = async (req: Request, res: Response) => {
         console.log(error);
         if (error instanceof Error) {
         res.status(500).json({error: error.message});
-        } else res.status(500).json({error: "Error del servidor"});;
+        } else res.status(500).json({error: "Error del servidor"});
     }
 };
 
@@ -40,7 +40,7 @@ const createUser = async(req: Request, res: Response) => {
         console.log(error);
         if (error instanceof Error) {
         res.status(500).json({error: error.message});
-        } else res.status(500).json({error: "Error del servidor"});;
+        } else res.status(500).json({error: "Error del servidor"});
     }
 };
 
