@@ -9,7 +9,7 @@ const getAllMovies = async () => {
     return movies;
 };
 
-const getMovieById = async (id: string) => { 
+const getMovieById = async (id: number) => { 
     const movie = await MovieModel.findMovieById(id);
     if (!movie) throw new HttpError("Movie not found", 400);
     return movie;
@@ -40,7 +40,7 @@ const createMovie = async(title: string,
     return newMovie;
 };
 
-const updateMovieById = async (id: string, title: string, 
+const updateMovieById = async (id: number, title: string, 
     release_year: number, 
     director?: string, 
     duration_minutes?: number,
@@ -52,7 +52,7 @@ const updateMovieById = async (id: string, title: string,
     return movie;
 };
 
-const deleteMovieById = async (id: string) => {
+const deleteMovieById = async (id: number) => {
     const movie = await MovieModel.removeMovie(id);
     if (!movie) throw new HttpError("Movie not found", 400);
     return movie;

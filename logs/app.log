@@ -5,3 +5,20 @@
 2024-12-09T05:18:43.246Z [ERROR]: /api/v1/movies/create POST column "releaseyear" of relation "movies" does not exist
 2024-12-09T05:20:42.386Z [INFO]: /api/v1/movies/create POST
 2024-12-09T05:20:42.532Z [ERROR]: /api/v1/movies/create POST column "releaseyear" of relation "movies" does not exist
+2024-12-10T04:28:05.787Z [INFO]: /api/v1/genres/createGenres POST
+2024-12-10T04:28:34.707Z [INFO]: /api/v1/genres/createGenre POST
+2024-12-10T04:28:35.316Z [ERROR]: /api/v1/genres/createGenre POST null value in column "name" of relation "genres" violates not-null constraint
+2024-12-10T04:30:17.719Z [ERROR]: /api/v1/genres/createGenre POST Genre already exists
+2024-12-10T06:04:43.978Z [ERROR]: /api/v1/movie_genre/ReadMovieGenre GET invalid input syntax for type integer: "NaN"
+2024-12-10T06:07:29.165Z [ERROR]: /api/v1/movie_genre/ReadMovieGenre GET invalid input syntax for type integer: "NaN"
+2024-12-10T06:09:47.906Z [ERROR]: /api/v1/movie_genre/CreateMovieGenre POST null value in column "movie_id" of relation "movies_genres" violates not-null constraint
+2024-12-10T06:12:23.391Z [ERROR]: /api/v1/movie_genre/ReadMovieGenre GET invalid input syntax for type integer: "NaN"
+2024-12-10T06:12:31.481Z [ERROR]: /api/v1/movie_genre/ReadMovieGenre GET invalid input syntax for type integer: "NaN"
+2024-12-10T06:39:22.073Z [ERROR]: /api/v1/movie_genre/ReadMovieGenre/ GET invalid input syntax for type integer: "NaN"
+2024-12-10T07:32:22.351Z [ERROR]: /api/v1/auth/login POST Password incorrect 
+2024-12-10T07:32:28.796Z [ERROR]: /api/v1/auth/login POST Password incorrect 
+2024-12-10T07:38:29.504Z [ERROR]: /api/v1/reviews/Create POST null value in column "movie_id" of relation "reviews" violates not-null constraint
+2024-12-10T07:50:33.800Z [ERROR]: /api/v1/reviews/Create POST null value in column "movie_id" of relation "reviews" violates not-null constraint
+2024-12-10T07:51:56.892Z [ERROR]: /api/v1/reviews/Create POST null value in column "movie_id" of relation "reviews" violates not-null constraint
+2024-12-10T07:52:06.525Z [ERROR]: /api/v1/reviews/Create POST null value in column "movie_id" of relation "reviews" violates not-null constraint
+2024-12-10T07:53:23.358Z [ERROR]: /api/v1/reviews/Create POST null value in column "movie_id" of relation "reviews" violates not-null constraint

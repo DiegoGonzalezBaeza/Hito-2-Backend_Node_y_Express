@@ -51,7 +51,7 @@ const findAllMovies = async () => {
     return rows as Movie[];
   };
   
-const findMovieById = async (id: string) => {
+const findMovieById = async (id: number) => {
     const query = {
       text: "SELECT * FROM movies WHERE id = $1",
       values: [id],
@@ -62,7 +62,7 @@ const findMovieById = async (id: string) => {
 };
   
 const updateMovie = async(
-    id: string,
+    id: number,
     title: string, 
     release_year: number, 
     director?: string, 
@@ -78,7 +78,7 @@ const updateMovie = async(
     return rows[0] as Movie;
 };
   
-const removeMovie = async (id: string) => {
+const removeMovie = async (id: number) => {
     const query = {
       text: "DELETE FROM movies WHERE id = $1 RETURNING *",
       values: [id],

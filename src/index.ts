@@ -6,7 +6,9 @@ import { httpErrorHandle } from "./middlewares/httpErrorHandle.middleware";
 import { loggerMiddleware } from "./middlewares/logger.middleware";
 import rateLimit from "express-rate-limit";
 import movieRoute from "./routes/movie.route";
-
+import genreRoute from "./routes/genre.route";
+import movieGenreRoutes from "./routes/movie_genre.route";
+import reviewRoutes from "./routes/review.route";
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -37,7 +39,18 @@ app.use("/api/v1/users", userRoute);
 
 //  relacionas las rutas de auth.route y las especifica al string: "/api/v1/auth"
 app.use("/api/v1/auth", authRoute);
+
+//  relacionas las rutas de movie.route y las especifica al string: "/api/v1/movies"
 app.use("/api/v1/movies", movieRoute);
+
+//  relacionas las rutas de genre.route y las especifica al string: "/api/v1/genres"
+app.use("/api/v1/genres", genreRoute);
+
+
+// Definir las rutas para los géneros de películas
+app.use("/api/v1/movie_genre", movieGenreRoutes);
+
+app.use("/api/v1/reviews", reviewRoutes);
 
 app.use(httpErrorHandle);
 

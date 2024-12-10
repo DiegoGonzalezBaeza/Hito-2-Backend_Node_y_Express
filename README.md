@@ -90,11 +90,25 @@ Con la clase pool creada en database.ts, se deben crear los modelos de datos utl
 
 jwt.io
 
+# 5. LOGGER Winston
 
+Se utiliza para crear un registro de todos errores o información que uno desee.
 
+```bash
+npm install winston
+```
+```bash
+npm install --save-dev @types/winston
+```
+automáticamente se crea la carpeta logger.
 
+# 6. Políticas de trotting
 
+Limitaciones creadas, pueden ser ventanas de tiempo (oara contabilizar las solicitudes), limites de solicitudes y Acciones a tomar
 
+```bash
+npm install express-rate-limit
+```
 
 
 

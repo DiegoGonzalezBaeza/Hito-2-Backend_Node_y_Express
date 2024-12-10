@@ -13,7 +13,7 @@ const getMovies = async(req: Request, res: Response, next: NextFunction) => {
 const getMovie = async (req: Request, res: Response, next: NextFunction) => {
     try{
         const { id } = req.params;
-        const movie = await movieService.getMovieById(id);
+        const movie = await movieService.getMovieById(parseInt(id));
     if (!movie) {
         res.status(404).json({ message: "Movie not found" });
     } else {
