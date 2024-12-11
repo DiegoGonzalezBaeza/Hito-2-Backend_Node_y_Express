@@ -49,7 +49,7 @@ const getReviewById = async (req: Request, res: Response, next: NextFunction) =>
     const review = await ReviewsService.getReviewById(parseInt(id, 10));
 
     if (!review) {
-      return res.status(404).json({ error: "Review not found" });
+      return void res.status(404).json({ error: "Review not found" });
     }
 
     res.status(200).json(review); // Devuelve la reseña específica
@@ -61,13 +61,13 @@ const getReviewById = async (req: Request, res: Response, next: NextFunction) =>
 // Actualizar una reseña
 const updateReview = async (req: Request, res: Response, next: NextFunction) => {
   const { id } = req.params;
-  const { rating, reviewText } = req.body;
+  const { rating, review_text } = req.body;
 
   try {
-    const updatedReview = await ReviewsService.updateReview(parseInt(id, 10), rating, reviewText);
+    const updatedReview = await ReviewsService.updateReview(parseInt(id, 10), rating, review_text);
 
     if (!updatedReview) {
-      return res.status(404).json({ error: "Review not found" });
+      return void res.status(404).json({ error: "Review not found" });
     }
 
     res.status(200).json(updatedReview); // Devuelve la reseña actualizada
@@ -84,7 +84,7 @@ const deleteReview = async (req: Request, res: Response, next: NextFunction) => 
     const deletedReview = await ReviewsService.deleteReview(parseInt(id, 10));
 
     if (!deletedReview) {
-      return res.status(404).json({ error: "Review not found" });
+      return void res.status(404).json({ error: "Review not found" });
     }
 
     res.status(200).json({ message: "Review deleted successfully" });

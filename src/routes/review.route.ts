@@ -16,12 +16,12 @@ router.get("/movie/:movieId", ReviewsController.getReviewsByMovie);
 router.get("/user/:userId", ReviewsController.getReviewsByUser);
 
 // Obtener una reseña por su id
-// router.get("/:id", ReviewsController.getReviewById);
+//  router.get("/:id", ReviewsController.getReviewById);
 
 // Actualizar una reseña por su id
-// router.put("/:id", ReviewsController.updateReview);
+// router.put("/Update/:id", ReviewsController.updateReview);
 
 // Eliminar una reseña por su id
-// router.delete("/:id", ReviewsController.deleteReview);
+// router.delete("/Delete/:id", ReviewsController.deleteReview);
 
 export default router;

@@ -10,8 +10,18 @@ import genreRoute from "./routes/genre.route";
 import movieGenreRoutes from "./routes/movie_genre.route";
 import reviewRoutes from "./routes/review.route";
 
+import openapiSpecification from "./config/swagger";
+import swaggerUi from "swagger-ui-express";
+
+
 const app = express();
 const port = process.env.PORT || 3000;
+
+app.use(
+    "/api/v1/api-docs",
+    swaggerUi.serve,
+    swaggerUi.setup(openapiSpecification)
+  );
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

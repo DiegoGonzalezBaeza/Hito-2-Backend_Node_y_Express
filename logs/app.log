@@ -22,3 +22,5 @@
 2024-12-10T07:51:56.892Z [ERROR]: /api/v1/reviews/Create POST null value in column "movie_id" of relation "reviews" violates not-null constraint
 2024-12-10T07:52:06.525Z [ERROR]: /api/v1/reviews/Create POST null value in column "movie_id" of relation "reviews" violates not-null constraint
 2024-12-10T07:53:23.358Z [ERROR]: /api/v1/reviews/Create POST null value in column "movie_id" of relation "reviews" violates not-null constraint
+2024-12-10T21:30:33.554Z [ERROR]: /api/v1/movies/readOne/:id GET invalid input syntax for type integer: "NaN"
+2024-12-10T21:32:45.119Z [ERROR]: /api/v1/movies/readOne/:id GET invalid input syntax for type integer: "NaN"

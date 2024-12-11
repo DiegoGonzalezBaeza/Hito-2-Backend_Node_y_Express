@@ -34,9 +34,9 @@ const getReviewById = async (id: number): Promise<Review | null> => {
 const updateReview = async (
   id: number, 
   rating: number, 
-  reviewText: string
+  review_text: string
 ): Promise<Review | null> => {
-  const updatedReview = await ReviewsModel.updateReview(id, rating, reviewText);
+  const updatedReview = await ReviewsModel.updateReview(id, rating, review_text);
   return updatedReview;
 };
 

@@ -1,0 +1,228 @@
+openapi: 3.0.0
+info:
+  title: Reviews API
+  description: API for managing reviews.
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000/api/v1
+    description: Local server
+
+paths:
+  /reviews/Create:
+    post:
+      summary: Create a new review
+      description: Creates a new review for a movie.
+      tags:
+        - Reviews
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReviewCreateRequest'
+      responses:
+        '201':
+          description: The created review.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Review'
+        '401':
+          description: Unauthorized
+        '500':
+          description: Internal server error.
+
+  /reviews/movie/{movieId}:
+    get:
+      summary: Get reviews by movie
+      description: Retrieves all reviews for a specific movie.
+      tags:
+        - Reviews
+      parameters:
+        - name: movieId
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: The ID of the movie.
+      responses:
+        '200':
+          description: A list of reviews for the movie.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Review'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Movie not found
+        '500':
+          description: Internal server error.
+
+  /reviews/user/{userId}:
+    get:
+      summary: Get reviews by user
+      security:
+        - bearerAuth: []
+      description: Retrieves all reviews made by a specific user.
+      tags:
+        - Reviews
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The ID of the user.
+      responses:
+        '200':
+          description: A list of reviews by the user.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Review'
+        '401':
+          description: Unauthorized
+        '404':
+          description: User not found
+        '500':
+          description: Internal server error.
+
+  /reviews/{id}:
+    get:
+      summary: Obtener una reseña por ID
+      tags:
+        - Reviews
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: ID de la reseña
+      responses:
+        '200':
+          description: Datos de la reseña
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Review'
+        '404':
+          description: Reseña no encontrada
+
+  /reviews/Update/{id}:
+    put:
+      summary: Actualizar una reseña
+      tags:
+        - Reviews
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: ID de la reseña
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                rating:
+                  type: number
+                  format: float
+                  example: 4.8
+                review_text:
+                  type: string
+                  example: "Actualización del texto de la reseña."
+      responses:
+        '200':
+          description: Reseña actualizada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Review'
+        '404':
+          description: Reseña no encontrada
+
+  /reviews/Delete/{id}:
+    delete:
+      summary: Eliminar una reseña
+      tags:
+        - Reviews
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: ID de la reseña
+      responses:
+        '200':
+          description: Reseña eliminada exitosamente
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Review deleted successfully"
+        '404':
+          description: Reseña no encontrada
+
+
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: "http"
+      scheme: "bearer"
+      bearerFormat: "JWT"
+
+  schemas:
+    Review:
+      type: object
+      properties:
+        id:
+          type: integer
+        user_id:
+          type: string
+        movie_id:
+          type: integer
+        rating:
+          type: integer
+        review_text:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+      required:
+        - id
+        - user_id
+        - movie_id
+        - rating
+
+    ReviewCreateRequest:
+      type: object
+      properties:
+        movie_id:
+          type: integer
+        rating:
+          type: integer
+        review_text:
+          type: string
+      required:
+        - movie_id
+        - rating
