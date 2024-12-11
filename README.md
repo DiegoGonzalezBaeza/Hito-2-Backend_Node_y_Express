@@ -1,5 +1,7 @@
 # HITO 2 - Node.js - Express - API
 
+# HITO 3 - Testing
+
 Proyecto educativo básico "Creación de un servidor" con node y express
 
 API de Review y Rating de peliculas (IMDb y Rotten Tomatoes) 
