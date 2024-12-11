@@ -1,5 +1,4 @@
 # HITO 2 - Node.js - Express - API
-# Hito-2-Backend_Node_y_Express
 
 Proyecto educativo básico "Creación de un servidor" con node y express
 
@@ -132,3 +131,81 @@ npm i --save-dev @types/swagger-ui-express
 # CRUD COMPLETA PARA LA TABLA DE REVIEWS
 
 ![image](./images/API_swagger.webp)
+
+# Hito-3-test
+
+# 6. Vitest
+
+```bash
+npm install -D vitest
+```
+
+En package.json:
+```json
+  "scripts": {
+    "test": "vitest",
+    "dev": "tsx watch src/index.ts",
+    "build": "pkgroll",
+    "start": "node dist/index.js"
+  },
+```
+
+# .7 Supertest
+
+```bash
+npm install -D supertest
+```
+```bash
+npm i --save-dev @types/supertest
+```
+
+
+# .8 Compilar solo un archivo - test rutas de usuario
+
+```bash
+npx vitest --run tests/routes/user.route.test.ts
+```
+
+Codigo en user.route.test.ts:
+
+```ts
+// /api/v1/users
+
+import express from "express";
+import request from "supertest";
+import { describe, expect, it } from "vitest";
+
+const app = express();
+
+app.get("/", (req, res) => {
+    res.status(200).json({ok: true});
+});
+
+describe("test 1 express", () => {
+
+    it("GET all users/ should return code 200", async() => {
+
+        const response = await request(app).get("/");
+        const statusCode = response.statusCode;
+
+        expect(statusCode).toBe(200);
+    });
+});
+
+app.get("/:id", (req, res) => {
+    res.status(200).json({ok: true});
+});
+
+describe("test 2 express", () => {
+
+    it("GET user by id/ should return code 200", async() => {
+
+        const response = await request(app).get("/:id");
+        const statusCode = response.statusCode;
+
+        expect(statusCode).toBe(200);
+    });
+});
+```
+
+![image](./images/test_routes_user.webp)
